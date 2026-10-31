@@ -188,6 +188,19 @@ write('404.html', layout({ path: '/404.html', key: 'notfound', section: '', noin
 // Old address kept working: /home -> /
 write('home/index.html', `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>Ridesafe</title><link rel="canonical" href="${site.url}/"><meta http-equiv="refresh" content="0; url=/"><meta name="robots" content="noindex"></head><body><a href="/">Continue to Ridesafe</a></body></html>`);
 write('_redirects', '/home  /  301\n/home/  /  301\n');
+// Same rules for Apache/LiteSpeed hosting (Hostinger).
+write('.htaccess', `ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteRule ^home/?$ / [R=301,L]
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType image/webp "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+`);
 
 if (site.noindex) write('robots.txt', 'User-agent: *\nDisallow: /\n');
 else write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
