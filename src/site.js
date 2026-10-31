@@ -231,7 +231,15 @@
       void out.offsetWidth;
       out.classList.add('is-fresh');
     }
-    form.addEventListener('change', update);
+    form.addEventListener('change', () => {
+      update();
+      if (!val('age') || !val('hold')) return;
+      // On phones the answer lands below the fold (under the action bar): bring it, or the next question, into view.
+      const next = yearsSet.hidden || val('years') ? out : yearsSet;
+      if (next.getBoundingClientRect().bottom > innerHeight - 80) {
+        next.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+    });
     form.addEventListener('submit', (e) => e.preventDefault());
     update();
   });
