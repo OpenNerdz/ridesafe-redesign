@@ -41,7 +41,8 @@
   --wrap: 1200px;
   --gutter: clamp(16px, 4.5vw, 32px);
   --ease: cubic-bezier(.2, .7, .2, 1);
-  color-scheme: light;
+  /* "only" stops browsers that darken websites (Chrome, Samsung Internet) from overriding the light theme. */
+  color-scheme: only light;
 }
 
 :root[data-theme='dark'] {
