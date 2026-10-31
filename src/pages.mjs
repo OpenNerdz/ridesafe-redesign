@@ -254,7 +254,7 @@ export function home() {
         </div>
         <a class="link-arrow" href="/reviews/">Read all ${reviews.length} reviews${icon('arrow')}</a>
       </div>
-      <ul class="reviews" role="list">${featured.map((r) => reviewCard(r)).join('')}</ul>
+      <ul class="reviews reviews--home" role="list">${featured.map((r) => reviewCard(r)).join('')}</ul>
     </div>
   </section>
 

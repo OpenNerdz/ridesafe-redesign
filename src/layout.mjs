@@ -113,11 +113,11 @@ function menuSheet(page) {
         <li><a href="/meet-our-friends/"${page.section === 'friends' ? ' aria-current="page"' : ''}>Our friends</a></li>
       </ul>
       <div class="sheet__contact">
-        ${hoursStatus('status--on-dark')}
+        ${hoursStatus()}
         <div class="sheet__btns">
-          <a class="btn btn--light" href="${site.phoneHref}">${icon('phone')}Call</a>
-          <a class="btn btn--light" href="${waLink('Hi Ridesafe, I have a question about training.')}">${icon('whatsapp', 'i-wa')}WhatsApp</a>
-          <a class="btn btn--light" href="mailto:${site.email}">${icon('mail')}Email</a>
+          <a class="btn btn--ghost" href="${site.phoneHref}">${icon('phone')}Call</a>
+          <a class="btn btn--ghost" href="${waLink('Hi Ridesafe, I have a question about training.')}">${icon('whatsapp', 'i-wa')}WhatsApp</a>
+          <a class="btn btn--ghost" href="mailto:${site.email}">${icon('mail')}Email</a>
         </div>
         <button class="sheet__theme" type="button" data-theme-toggle aria-label="Switch to dark theme">${icon('moon', 'i-moon')}${icon('sun', 'i-sun')}<span class="i-moon-label">Dark theme</span><span class="i-sun-label">Light theme</span></button>
       </div>
@@ -197,7 +197,6 @@ function footer() {
   </div>
   <div class="wrap ftr__base">
     <p>© ${new Date().getFullYear()} ${site.fullName}. All rights reserved.</p>
-    <p>${site.address.street}, ${site.address.town}, ${site.address.region} ${site.address.postcode}</p>
   </div>
 </footer>`;
 }
